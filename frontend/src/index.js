@@ -1,23 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import App from './components/App/App';
-import Chat from './components/Chat';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Router>
-      <Switch>
-        <Route path='/chat' component={Chat} />
-        <Route path='/' component={App} />
-      </Switch>
-    </Router>
-    <Footer />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
