@@ -1,13 +1,27 @@
-var server = require('../app');
+var app = require('../app');
 var debug = require('debug')('webchat:server');
-var port = normalizePort(process.env.PORT || '3001');
-server.set('port', port);
+var http = require('http');
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+var server = http.createServer(app);
+const socketio = require("socket.io").Server;
+const io = new socketio(server) 
 
 server.listen(port, ()=>{
   console.log(`server listens in http://localhost:${port}/`);
 });
 server.on('error', onError);
 server.on('listening', onListening);
+
+io.on('connection',(socket)=>{
+  console.log(`user connected`);
+  socket.on('chat message', msg=>{
+    io.emit('chat message', msg)
+    console.log(msg);
+  })
+})
+
+
 
 function normalizePort(val) {
   var port = parseInt(val, 10);

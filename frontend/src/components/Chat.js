@@ -1,9 +1,13 @@
 
 function Chat() {
     return (
-        <div>
-            <p>this is chat page</p>
-        </div>
+        
+  <body>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+  </body>
     )
 }
 

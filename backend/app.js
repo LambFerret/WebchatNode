@@ -4,14 +4,18 @@ var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const handlebars = require('express-handlebars')
 var cors = require("cors")
-
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+app.engine('hbs', handlebars({
+  defaultLayout: 'layout',
+  extname: 'hbs',
+  layoutsDir: __dirname + '/views/layouts/',
+}))
+app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
 app.use(cors());
 app.use(logger('dev'));
