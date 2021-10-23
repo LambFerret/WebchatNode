@@ -8,7 +8,7 @@ const handlebars = require('express-handlebars')
 const cors = require("cors")
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const chatRouter = require('./routes/chat');
 app.engine('hbs', handlebars({
   defaultLayout: 'layout',
   extname: 'hbs',
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/chat', chatRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));
