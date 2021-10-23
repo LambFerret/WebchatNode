@@ -1,7 +1,7 @@
 import './Chat.css'
 import socketio from 'socket.io-client';
 import React, { useEffect, useState } from "react";
-var socket = socketio("http://localhost:3001/")
+var socket = socketio("http://http://34.64.136.26:3001/")
 
 function Chat() {
     const [msg, setMsg] = useState('');
